@@ -20,10 +20,6 @@ namespace Task_B
             textBox3.Clear();
         }
 
-        private void textPersonName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonAddPerson_Click(object sender, EventArgs e)
         {
@@ -32,19 +28,10 @@ namespace Task_B
             textPersonName.Clear();
         }
 
-        private void textPerson1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonShowFriends_Click(object sender, EventArgs e)
         {
-            string personName = textPersonName.Text;
+            string personName = textBox3.Text;
 
             if (string.IsNullOrWhiteSpace(personName))
             {
@@ -60,15 +47,13 @@ namespace Task_B
                 return;
             }
 
-            LinkedList<GraphNode> friendsList = personNode.GetAdjList();
-            StringBuilder friendsStringBuilder = new StringBuilder();
+            LinkedList<string> friendsList = personNode.GetAdjList();
 
-            foreach (GraphNode friend in friendsList)
+            foreach (string friend in friendsList)
             {
-                friendsStringBuilder.AppendLine(friend.Name);
+                textAllFriends.Items.Add(friend);
             }
 
-            MessageBox.Show(friendsStringBuilder.ToString(), $"Friends of {personName}", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void textFriendsof_TextChanged(object sender, EventArgs e)
@@ -77,6 +62,19 @@ namespace Task_B
         }
 
         private void buttonShowAll_Click(object sender, EventArgs e)
+        {
+            textAllFriends.Items.Clear();
+            List<string> names = socialNetwork.GetAllNodes();
+
+            foreach (string name in names)
+            {
+                textAllFriends.Items.Add(name);
+            }
+
+        }
+
+
+        private void textFriendsof_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

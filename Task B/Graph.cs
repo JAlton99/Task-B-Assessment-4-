@@ -54,6 +54,15 @@ namespace Task_B
 
             return allEdges;
         }
-    }
 
+        public List<string> GetAllNodes()
+        {
+            List<string> nodeNames = new List<string>();
+            foreach (GraphNode node in nodes)
+            {
+                nodeNames.Add(node.Name);
+            }
+            return nodeNames;
+        }
+    }
 }
