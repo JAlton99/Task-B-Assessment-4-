@@ -37,5 +37,10 @@ namespace Task_B
         {
             return adjList;
         }
+
+        public void RemoveEdge(GraphNode targetNode) 
+        {
+            adjList.Remove(targetNode.Name);
+        }
     }
 }

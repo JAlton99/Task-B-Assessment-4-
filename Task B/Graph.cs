@@ -64,5 +64,26 @@ namespace Task_B
             }
             return nodeNames;
         }
+
+        public bool RemoveNode(string Name)
+        { 
+            GraphNode nodeToRemove = nodes.FirstOrDefault(node => node.Name == Name);
+
+            if (nodeToRemove == null)
+            {
+                return false;
+            }
+
+            // Remove all edges associated with the nodeToRemove
+            foreach (GraphNode node in nodes) 
+            { 
+                node.RemoveEdge(nodeToRemove);
+            }
+
+            // Remove the node itself from the list of nodes
+            nodes.Remove(nodeToRemove);
+
+            return true;
+        }
     }
 }
